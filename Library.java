@@ -1,20 +1,85 @@
 import java.util.Scanner;
 public class Library 
 {
-    private Book book;
+    private Book[] book;
     private Member member;
+    private int bookCount;
+    private int memberCount;
 
     public Library()
     {
         Scanner keyboard = new Scanner(System.in);
 
-        
-        
+        // Ask the user how many books to add
+        System.out.print("How many books do you want to add? ");
+        int size = keyboard.nextInt();
+        //keyboard.nextLine();
+        // Create an array that can hold the number of books entered
+        book = new Book[size];
+ 
+        // Use a for loop to enter information for each book
+        for (int i = 0; i < book.length; i++) 
+        {
+            System.out.println("\nEnter information for Book " + (i + 1)); 
+            System.out.print("Title: ");
+            String title = keyboard.nextLine();
+ 
+            System.out.print("Author: ");
+            String author = keyboard.nextLine();
+ 
+            System.out.print("ISBN: ");
+            String ISBN = keyboard.nextLine();
+ 
+            // Create a new Book object
+            // Store the Book object in the current array position
+            book[i] = new Book(title, author, ISBN);
+        }
+        keyboard.close();
+    }
+ 
+    // Register a member with the library
+    public void registerMember(Member member)
+    {
+        // Store the Member object in the Library
+        this.member = member;
+ 
+        System.out.println(member.getName() + " registered successfully.");
+    }
+ 
+    // Display all books stored in the array
+    public void displayBooks()
+    {
+        System.out.println("\nLibrary Books");
+ 
+        // Go through every Book object in the array
+        for (int i = 0; i < book.length; i++) 
+        {
+            System.out.println("\nBook " + (i + 1));
+ 
+            // Use getters to display the book information
+            System.out.println("Title: " + book[i].getTitle());
+            System.out.println("Author: " + book[i].getAuthor());
+            System.out.println("ISBN: " + book[i].getISBN());
+        }
+    }
+    
+    public void displayMembers()
+    {
+        System.out.println("\nLibrary Members");
 
-
-
+        for (int i = 0; i < memberCount; i++) 
+        {
+            System.out.println("Name: " + member[i].getName());
+            System.out.println("MemberID: " + member[i].getMembershipID());
+            System.out.println("Borrowed Books: " + member[i].getBorrowedBooks());
+        }
 
     }
-
     
+    // Return a Book object from a specific array position
+    public Book getBook(int index) 
+    {
+        return book[index];
+    }
+   
 }
