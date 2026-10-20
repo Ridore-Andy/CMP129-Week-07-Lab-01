@@ -2,17 +2,17 @@
 
 ## Student Information
 
-- Student name:
-- Week:
-- Lab:
-- Date:
+- Student name: Andy Ridore
+- Week: 7
+- Lab: 1
+- Date: 10/19/2026
 
 ## AI Use
 
 Did you use an AI tool for this lab?
 
 - [ ] Yes
-- [ ] No
+- [n] No
 
 If yes, complete the sections below. If no, write “No AI tool was used” under Summary.
 
