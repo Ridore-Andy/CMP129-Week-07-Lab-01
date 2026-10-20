@@ -10,7 +10,7 @@ public class Library
     {
         Scanner keyboard = new Scanner(System.in);
 
-        // Ask the user how many books to add
+        // Ask the user how many members books to add
         System.out.println("How many members do you want to add?");
         int memSize = keyboard.nextInt();
         keyboard.nextLine();
@@ -22,11 +22,31 @@ public class Library
         //array that can hold the number of books entered
         book = new Book[bookSize];
         bookCount = bookSize;
-        //array for members
+        //array for members that holds number entered
         member = new Member[memSize];
-        memberCount = 0;
+        memberCount = memSize;
+
+        //for loop to enter information for members
+        for (int i=0; i<member.length; i++) 
+        {
+            System.out.println("\nEnter information for member " + (i + 1)); 
+            System.out.print("Name: ");
+            String name = keyboard.nextLine();
  
-        // Use a for loop to enter information for each book
+            System.out.print("Membership Id: ");
+            String membershipID = keyboard.nextLine();
+ 
+            System.out.print("Borrowed Books: ");
+            int borrowedBooks = keyboard.nextInt();
+            keyboard.nextLine();
+ 
+
+            member[i] = new Member(name, membershipID, borrowedBooks);
+        }
+ 
+        System.out.println("\n---------------------");
+
+        //for loop to enter information for each book
         for (int i=0; i<book.length; i++) 
         {
             System.out.println("\nEnter information for Book " + (i + 1)); 
@@ -43,22 +63,12 @@ public class Library
             // Store the Book object in the current array position
             book[i] = new Book(title, author, ISBN);
         }
-        keyboard.close();
-    }
- 
-    // Register a member with the library
-    public void registerMember(Member newMember)
-    {
-        // Store the Member object in the Library
-        member[memberCount] = newMember;
-        memberCount++;
-        System.out.println(newMember.getName()+" registered successfully.");
     }
  
     // Display all books stored in the array
     public void displayBooks()
     {
-        System.out.println("\nLibrary Books");
+        System.out.println("\n--Library Books--");
  
         // Go through every Book object in the array
         for (int i=0; i<bookCount; i++) 
@@ -73,7 +83,7 @@ public class Library
     
     public void displayMembers()
     {
-        System.out.println("\nLibrary Members");
+        System.out.println("\n--Library Members--");
 
         for (int i=0; i<memberCount; i++) 
         {
